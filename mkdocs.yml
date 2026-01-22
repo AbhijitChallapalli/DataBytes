@@ -1,0 +1,56 @@
+site_name: Data Bytes
+site_author: Abhijit Challapalli
+
+theme:
+  name: material #readthedocs
+  custom_dir: overrides
+  logo: images/logo.jpg
+  favicon: images/logo.jpg
+  palette:
+    scheme: default # Dark theme - slate
+    primary: black
+    accent: red
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.tabs
+
+nav:
+  - Home: index.md
+  - Blogs:
+      - Probability:
+          - Basics: blogs/Probability/Probability_topic1.md
+          - Topic 2: blogs/Probability/topic2.md
+      - Nueral Networks:
+          - Topic 1: blogs/Neural Networks/topic1.md
+          - Topic 2: blogs/Neural Networks/topic2.md
+      - Deep Learning:
+          - Topic 1: blogs/Deep Learning/topic1.md
+          - Topic 2: blogs/Deep Learning/topic2.md
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite
+  - footnotes
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AbhijitChallapalli
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/abhijit-c-b5876814b/
+  favicon: images/logo.jpg #images/favicon.ico
+

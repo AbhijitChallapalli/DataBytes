@@ -20,6 +20,7 @@ theme:
 nav:
   - Home: index.md
   - Blogs:
+  - blogs/index.md
       - Probability:
           - Basics: blogs/Probability/Probability_topic1.md
           - Topic 2: blogs/Probability/topic2.md

@@ -5,14 +5,12 @@
   <img src="images/Abhi.jpg" width="150" style="border-radius: 50%;" alt="Abhijit Challapalli">
 
   <div>
-    <p>Hello! I'm <strong>Abhijit Challapalli</strong>, a PhD student at <strong>The University of Texas at Arlington</strong>.
-    I actively research and learn about Probabilistic Models and Diffusion Models. I also love to study and teach mathematics, especially its concepts in the fields of machine learning and deep learning.</strong>.</p>
+    <p>
+      Hi, I’m <strong>Abhijit Challapalli</strong> a PhD student at <strong>The University of Texas at Arlington</strong>.
+      <strong>DataBytes</strong> is where I publish short, focused notes and blog posts on topics I’m actively learning and building with especially <strong>probability</strong>, <strong>probabilistic modeling</strong>, and <strong>diffusion models</strong>.I like writing with a “math-first, intuition and code based” style blogs.
+    </p>
   </div>
 
 </div>
 
-- **Research Interests**: Probabilistic Models, Diffusion Models, Machine Learning  
-
-
-
-
+- **Research Interests**: Probabilistic Models, Diffusion Models, Machine Learning

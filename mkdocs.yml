@@ -33,6 +33,10 @@ nav:
           - "blogs/Deep Learning/index.md"
           - Topic 1: blogs/Deep Learning/topic1.md
           - Topic 2: blogs/Deep Learning/topic2.md
+      - Diffusion Models:
+          - "blogs/Diffusion Models/index.md"
+          - Topic 1: blogs/Diffusion Models/topic1.md
+          # - Topic 2: blogs/Diffusion Models/topic2.md
 
 extra_css:
   - stylesheets/extra.css

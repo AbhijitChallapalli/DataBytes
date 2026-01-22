@@ -22,12 +22,15 @@ nav:
   - Blogs:
       - blogs/index.md
       - Probability:
-          - Basics: blogs/Probability/Probability_topic1.md
+          - blogs/Probability/index.md
+          - Basics: blogs/Probability/topic1.md
           - Topic 2: blogs/Probability/topic2.md
       - Nueral Networks:
+          - "blogs/Neural Networks/index.md"
           - Topic 1: blogs/Neural Networks/topic1.md
           - Topic 2: blogs/Neural Networks/topic2.md
       - Deep Learning:
+          - "blogs/Deep Learning/index.md"
           - Topic 1: blogs/Deep Learning/topic1.md
           - Topic 2: blogs/Deep Learning/topic2.md
 

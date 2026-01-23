@@ -1,5 +1,7 @@
 # Diffusion Models
 
+Author: Abhijit Challapalli
+
 Diffusion models look magical “start from noise, end with an image”, but the math is a clean chain:
 
 probability & density → likelihood → KL divergence → ELBO → diffusion as a latent-variable model → a simple MSE loss (predicting noise)

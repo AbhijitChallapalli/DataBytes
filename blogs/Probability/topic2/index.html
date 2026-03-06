@@ -1,0 +1,1457 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Abhijit Challapalli">
+      
+      
+      
+        <link rel="prev" href="../topic1/">
+      
+      
+        <link rel="next" href="../../Neural%20Networks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Topic 2 - Data Bytes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#probability-vs-likelihood" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Data Bytes" class="md-header__button md-logo" aria-label="Data Bytes" data-md-component="logo">
+      
+  <img src="../../../images/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Bytes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Topic 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Blogs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Data Bytes" class="md-nav__button md-logo" aria-label="Data Bytes" data-md-component="logo">
+      
+  <img src="../../../images/logo.jpg" alt="logo">
+
+    </a>
+    Data Bytes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blogs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blogs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Probability
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Probability
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Probability?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-if-the-coin-is-biased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What if the Coin is Biased?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deriving-the-mle-for-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deriving the MLE for Likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-simpler-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In simpler terms:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nueral Networks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nueral Networks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Neural%20Networks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Neural%20Networks/topic1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Neural%20Networks/topic2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deep Learning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Deep%20Learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Deep%20Learning/topic1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Deep%20Learning/topic2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diffusion Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Diffusion Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Diffusion%20Models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Diffusion%20Models/topic1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Diffusion%20Models/ELBO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ELBO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Probability?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-if-the-coin-is-biased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What if the Coin is Biased?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deriving-the-mle-for-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deriving the MLE for Likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-simpler-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In simpler terms:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="probability-vs-likelihood">Probability vs Likelihood<a class="headerlink" href="#probability-vs-likelihood" title="Permanent link">&para;</a></h1>
+<p>Probability and statistics have different meanings, though they are often misinterpreted or used interchangeably. Let's break it down and understand them further.</p>
+<hr />
+<h3 id="what-is-probability"><strong>What is Probability?</strong><a class="headerlink" href="#what-is-probability" title="Permanent link">&para;</a></h3>
+<p><strong>Probability</strong> is a branch of mathematics and statistics concerned with the numerical description of how likely events are to occur. The probability of an event is a number between <strong>0 and 1</strong> — the closer it is to 1, the more likely the event is to occur.</p>
+<h3 id="example"><strong>Example</strong><a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p>Tossing a fair (unbiased) coin. The outcomes are two — heads and tails. Since the coin is fair:</p>
+<div class="arithmatex">\[
+P(\text{Head}) = 0.5,\quad P(\text{Tail}) = 0.5
+\]</div>
+<hr />
+<p>Now, let's say you toss the same fair coin 10 times and observe 7 heads and 3 tails. Let's compute the probability of this outcome.</p>
+<p>This is a <strong>Bernoulli experiment</strong> repeated <code>n = 10</code> times, and follows the <strong>Binomial distribution</strong>. The probability of getting <code>k</code> successes (heads) is:</p>
+<div class="arithmatex">\[
+P(\mathrm{k}) = \binom{n}{k} p^k (1 - p)^{n-k}
+\]</div>
+<p>Substituting in our values (<code>n = 10</code>, <code>k = 7</code>, <code>p = 0.5</code>):</p>
+<div class="arithmatex">\[
+P(7 \text{ heads}) = \binom{10}{7} \cdot 0.5^7 \cdot 0.5^3 = 0.1172
+\]</div>
+<p>This is how you compute the probability <strong>given</strong> that the parameter (p = 0.5) is known.</p>
+<hr />
+<h3 id="what-if-the-coin-is-biased"><strong>What if the Coin is Biased?</strong><a class="headerlink" href="#what-if-the-coin-is-biased" title="Permanent link">&para;</a></h3>
+<p>Now suppose you toss a <strong>biased coin</strong> 5 times and observe the outcomes:</p>
+<ul>
+<li>3 heads  </li>
+<li>2 tails  </li>
+</ul>
+<p>But this time, you don’t know the coin’s probability p of landing heads. So instead of computing probability, we compute the likelihood of different values of p given the observed data.</p>
+<ul>
+<li>
+<p><strong>Probability</strong>: Given a model (parameter), how likely is the observed data?<br />
+  Example:<br />
+  $$
+  P(\text{3 Heads} \mid p = 0.5)
+  $$</p>
+</li>
+<li>
+<p><strong>Likelihood</strong>: Given the observed data, how likely is a specific value of the parameter?<br />
+  Example:<br />
+ $$
+  \mathcal{L}(p \mid \text{3 Heads})
+ $$</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+\mathcal{L}(p \mid \text{3 Heads}) = \binom{5}{3} \cdot p^3 \cdot (1 - p)^2
+\]</div>
+<p>We don't know p here, The value of <span class="arithmatex">\( p \)</span> that <strong>maximizes</strong> this function is called the <strong>Maximum Likelihood Estimate (MLE)</strong>.</p>
+<p>In our case, the MLE is:</p>
+<div class="arithmatex">\[
+\hat{p} = 0.6,\quad \mathcal{L}(\hat{p}) = 0.3455
+\]</div>
+<!-- <iframe src="C:\Users\abhij\PhD\DataBytes\docs\blogs\category1\likelihood_plot.html" width="100%" height="500px" frameborder="0"></iframe> -->
+
+<h3 id="deriving-the-mle-for-likelihood">Deriving the MLE for Likelihood<a class="headerlink" href="#deriving-the-mle-for-likelihood" title="Permanent link">&para;</a></h3>
+<p>We are given the likelihood function (excluding the binomial coefficient since it does not affect the MLE):</p>
+<div class="arithmatex">\[
+\mathcal{L}(p) = p^3 (1 - p)^2
+\]</div>
+<p>Let:</p>
+<ul>
+<li><span class="arithmatex">\( u = p^3 \)</span></li>
+<li><span class="arithmatex">\( v = (1 - p)^2 \)</span></li>
+</ul>
+<p>Then the derivative using the product rule is:</p>
+<div class="arithmatex">\[
+\frac{d{L}}{dp} = \frac{du}{dp} \cdot v + u \cdot \frac{dv}{dp}
+\]</div>
+<p>Now plug in:</p>
+<div class="arithmatex">\[
+\frac{d{L}}{dp} = 3p^2(1 - p)^2 - 2p^3(1 - p)
+\]</div>
+<p>This can also be written equivalently as:</p>
+<div class="arithmatex">\[
+\frac{d{L}}{dp} = p^2(p - 1)(5p - 3)
+\]</div>
+<p>Find Critical Points by setting the derivative to zero:</p>
+<div class="arithmatex">\[
+p^2(1 - p)(3 - 5p) = 0
+\]</div>
+<p>Solutions:</p>
+<ul>
+<li><span class="arithmatex">\( p = 0 \)</span></li>
+<li><span class="arithmatex">\( p = 1 \)</span></li>
+<li><span class="arithmatex">\( p = \frac{3}{5} \)</span></li>
+</ul>
+<p>Select the Maximum, Since <span class="arithmatex">\( p = 0 \)</span> and <span class="arithmatex">\( p = 1 \)</span> yield zero likelihood, the maximum occurs at:</p>
+<div class="arithmatex">\[
+\hat{p} = \frac{3}{5} = 0.6
+\]</div>
+<p>This is the <strong>Maximum Likelihood Estimate (MLE)</strong> for the parameter <span class="arithmatex">\( p \)</span>.</p>
+<hr />
+<h3 id="in-simpler-terms">In simpler terms:<a class="headerlink" href="#in-simpler-terms" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Probability</strong> evaluates <strong>data given the parameter</strong></li>
+<li><strong>Likelihood</strong> evaluates <strong>parameter given the data</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Probability</th>
+<th>Likelihood</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Viewpoint</strong></td>
+<td>Model → Data</td>
+<td>Data → Model</td>
+</tr>
+<tr>
+<td><strong>Expression</strong></td>
+<td><span class="arithmatex">\(P(X \mid θ)\)</span></td>
+<td><span class="arithmatex">\(\mathcal{L}(θ \mid X)\)</span></td>
+</tr>
+<tr>
+<td><strong>Normalization</strong></td>
+<td>Integrates to 1 over <em>x</em></td>
+<td>Not normalized over <em>θ</em></td>
+</tr>
+<tr>
+<td><strong>Use-case</strong></td>
+<td>Predictions, simulations</td>
+<td>Parameter inference (e.g. MLE)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Probability</strong>: <em>Model → Data</em>.<br />
+<em>“Given θ, how likely is X?”</em></p>
+</li>
+<li>
+<p><strong>Likelihood</strong>: <em>Data → Model</em>.<br />
+<em>“Given observed X, how plausible is θ?”</em></p>
+</li>
+</ul>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Likelihood_function">Wikipedia: Likelihood function</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/Probability">Wikipedia: Probability</a>  </li>
+</ul>
+<!-- ## 6.  Gaussian (Normal) Distribution Likelihood
+
+For a continuous random variable (e.g., height, weight) modeled by a **normal distribution**:
+
+\[
+f(x \mid \mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
+\]
+
+For data points \( x_1, x_2, \dots, x_n \), the **likelihood function** for \( \mu \) and \( \sigma \) is:
+
+\[
+\mathcal{L}(\mu, \sigma \mid \mathbf{x}) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left( -\frac{(x_i - \mu)^2}{2\sigma^2} \right)
+\]
+
+The **log-likelihood** is often used:
+
+\[
+\ell(\mu, \sigma) = -\frac{n}{2} \log(2\pi) - n \log \sigma - \frac{1}{2\sigma^2} \sum_{i=1}^n (x_i - \mu)^2
+\]
+
+probability and statistics have different meanings. Often people misinterpret these. Let's break it down and understand it further.
+
+Probability by definition: Defined as a branch of mathematics and statistics concerning about events and numerical descriptions of how likely they are to occur. The probability of an event is a number betweeen 0 and 1. The larger the value more likely an event to occur. 
+
+Ex: Tossing a fair (unbiased) coin, the outcomes are two since the coin is fair (heads and tails), So the probability of seeing either head or tail is equal and is 0.5.
+
+Let's take the example of the same coin, however now you toss the coin multiple times and observed the outcomes.
+
+A coin is tossed 10 times and noticed 7 heads, 3 tails. Now let's calculate the probability of seeing 7 heads and we know the coin is fair (p=0.5).
+
+This can be consider as a bernoulli experiment repeated n ( here 10 ) times. The probability of seeing k successes is (n k) ( p)^k (1-p)^1-k
+
+probability(k=7)=
+
+What if the coin is not fair and since it's biased we can't say the probaility of both outcomes are same.
+
+So you tossed a biased coin and the observed the following data.
+
+3 heads and 2 tails and here we don't know the p- value.
+
+So in better terms:
+
+probability is how likely the event is gonna occur or how well our model or hypothesis is explains the observed data. .i.e. P(7 Heads|p=0.5)
+
+Where as likelihood is given the observed data how likely is your parameters.
+
+L(p| 3 Heads) -->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <!-- Left side -->
+      <div class="md-footer-copyright">
+        Built with ❤️  by Abhijit Challapalli © 2026 using
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">Material for MkDocs</a>
+      </div>
+
+      <!-- Right side: social icons -->
+      <div class="md-footer-social">
+        <a href="https://github.com/AbhijitChallapalli" target="_blank" aria-label="GitHub">
+          <span class="twemoji">
+            <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 012-.27c.68 0 1.36.09 2 .27 1.52-1.04 2.19-.82 2.19-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </span>
+        </a>
+        <a href="https://www.linkedin.com/in/abhijit-c-b5876814b/" target="_blank" aria-label="LinkedIn">
+          <span class="twemoji">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 
+                       0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 
+                       0-1.75-.784-1.75-1.75s.784-1.75 
+                       1.75-1.75 1.75.784 
+                       1.75 1.75-.784 
+                       1.75-1.75 1.75zm13.5 
+                       11.268h-3v-5.604c0-1.337-.025-3.062-1.871-3.062-1.872 
+                       0-2.159 1.461-2.159 2.969v5.697h-3v-10h2.879v1.367h.041c.401-.762 
+                       1.379-1.561 2.841-1.561 3.038 0 3.6 
+                       2.002 3.6 4.604v5.59z"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

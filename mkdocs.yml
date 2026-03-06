@@ -36,7 +36,8 @@ nav:
       - Diffusion Models:
           - "blogs/Diffusion Models/index.md"
           - Topic 1: blogs/Diffusion Models/topic1.md
-          # - Topic 2: blogs/Diffusion Models/topic2.md
+          - ELBO: blogs/Diffusion Models/ELBO.md
+          # - LLaDA: blogs/Diffusion Models/LLaDA.md
 
 extra_css:
   - stylesheets/extra.css
